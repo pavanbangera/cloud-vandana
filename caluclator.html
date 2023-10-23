@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculater using html css and js</title>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #666666;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input {
+            width: 262px;
+            height: 70px;
+            margin: 2px;
+            padding: 5px;
+            font-size: 30px;
+        }
+
+        button {
+            width: 90px;
+            height: 80px;
+            font-size: 18px;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <button onclick="addToDisplay('C')" style="background-color: #53B4A3;">C</button>
+        <button onclick="addToDisplay('7')" style="background-color: #212121; color: white;">7</button>
+        <button onclick="addToDisplay('8')" style="background-color: #212121; color: white;">8</button>
+        <button onclick="addToDisplay('9')" style="background-color: #212121; color: white;">9</button>
+        <button onclick="addToDisplay('+')">+</button>
+        <button onclick="addToDisplay('4')" style="background-color: #212121; color: white;">4</button>
+        <button onclick="addToDisplay('5')" style="background-color: #212121; color: white;">5</button>
+        <button onclick="addToDisplay('6')" style="background-color: #212121; color: white;">6</button>
+        <button onclick="addToDisplay('-')">-</button>
+        <button onclick="addToDisplay('1')" style="background-color: #212121; color: white;">1</button>
+        <button onclick="addToDisplay('2')" style="background-color: #212121; color: white;">2</button>
+        <button onclick="addToDisplay('3')" style="background-color: #212121; color: white;">3</button>
+        <button onclick="addToDisplay('*')">*</button>
+        <button onclick="addToDisplay('.')" style="background-color: #212121; color: white;">.</button>
+        <button onclick="addToDisplay('0')" style="background-color: #212121; color: white;">0</button>
+        <button onclick="calculate()" style="background-color: #212121; color: white;">=</button>
+        <button onclick="addToDisplay('/')">/</button>
+    </div>
+
+</body>
+<script>
+    let display = document.getElementById('display');
+    let currentValue = '';
+
+    function addToDisplay (value) {
+        if (value === 'C') {
+            currentValue = '';
+        } else if (value === '=') {
+
+            currentValue = eval(currentValue).toString();
+
+        } else {
+            currentValue += value;
+        }
+        display.value = currentValue;
+    }
+
+    function calculate () {
+        currentValue = eval(currentValue).toString();
+        display.value = currentValue;
+
+    }
+</script>
+
+</html>
