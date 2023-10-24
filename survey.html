@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: aquamarine;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: white;
+            padding: 10px;
+        }
+
+        .form-field {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="survey">
+            <div class="form-field">
+                <label for="name">Enter Your name:</label>
+                <input type="text" id="first-name" placeholder="First-name" required>
+                <input type="text" id="last-name" placeholder="last-name">
+            </div>
+            <div class="form-field">
+                <label for="DOB">Date of birth</label>
+                <input type="date" name="Date-of-birth" id="dob" max="2022-12-31" min="1950-12-31" required>
+            </div>
+            <div class="form-field">
+                <label for="country">Country:</label>
+                <select id="country" required>
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="india">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="Male">Male</label>
+                <input type="radio" name="gender" id="Male" value="male" required checked>
+                <label for="Female">Female</label>
+                <input type="radio" name="gender" id="Female" value="female" required>
+            </div>
+
+            <div class="form-field">
+                <label for="profession">Profession:</label>
+                <input type="text" id="profession" required>
+            </div>
+            <div class="form-field">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-field">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" required>
+            </div>
+            <div class="form-field">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let survey = document.getElementById("survey");
+
+        survey.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+
+
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const gender = document.getElementsByName('gender');
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+            let selectedGender;
+            for (const element of gender) {
+                console.log(element);
+                if (element.checked) {
+                    selectedGender = element.value;
+                    break;
+                }
+            }
+
+
+            const displayContent = `
+                    Full Name : ${firstName + " " + lastName}
+                    Date of Birth:</strong> ${dob}
+                    Country:</strong> ${country}
+                    Gender:</strong> ${selectedGender}
+                    Profession:</strong> ${profession}
+                    Email:</strong> ${email}
+                    Mobile Number:</strong> ${mobile}
+                `;
+
+
+            alert(displayContent);
+            survey.reset();
+        })
+
+    </script>
+</body>
+
+</html>
